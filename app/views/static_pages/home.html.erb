@@ -1,0 +1,21 @@
+<h1>Welcome to the THP Gossip Website !</h1>
+
+<%= link_to "Créer un nouveau gossip", new_gossip_path %>
+
+
+<div class="container">
+  <div class="row">
+    <% @gossips.each do |gossip| %>
+      <div class="col-md-4">
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+          <h6 class="border-bottom border-gray pb-2 mb-0"> <%= link_to gossip.title, gossips_path(gossip.id) %> </h6>  
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark"><%= gossip.user.first_name %></strong>
+            <%= gossip.content.truncate(10, omission: '...') %>
+
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

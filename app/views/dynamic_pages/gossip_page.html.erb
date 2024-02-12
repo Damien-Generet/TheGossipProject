@@ -1,0 +1,13 @@
+<h1>Gossip Page</h1>
+<br>
+<h2>Voici le gossip le plus croustillant !</h2>
+<br>
+<p>
+    C'est <%= link_to  @gossip.user.first_name, profile_path(@gossip.user.id) %> qui a écrit ceci :
+</p>
+</br>
+<p>
+    <%= @gossip.title %></br></br>
+    <%= @gossip.content %></br></br>
+    <%= @gossip.created_at %>
+</p>
