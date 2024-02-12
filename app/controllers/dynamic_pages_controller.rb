@@ -7,7 +7,9 @@ class DynamicPagesController < ApplicationController
   def gossip_page
    id = params[:gossip_id]
    @gossip = Gossip.find(id)   
+   @comment = Gossip.find(id).comments
   end
+
 
   def user_page
     user_id = params[:user_id]

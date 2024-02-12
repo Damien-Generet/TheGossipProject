@@ -13,3 +13,61 @@
  *= require_tree .
  *= require_self
  */
+
+/* CSS FOR HOME PAGE */
+
+ .new_gossip_link{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+ }
+
+.link_gossip{
+    transition: 1s;
+
+}
+.link_gossip:hover{
+    text-decoration-color: rgb(143, 132, 243);
+    color: rgb(143, 132, 243);
+    transition: 1s;
+}
+
+ a{
+    text-decoration-color: rgba(255, 255, 255, 0);
+    transition: 0.5s;
+ }
+
+ a:hover{
+    text-decoration-color: rgb(143, 132, 243);
+    color: rgb(143, 132, 243);
+    transition: 0.5s;
+ }
+
+ .bg-image{
+    background-image: url(/public/gossip_hero.jpg);
+ }
+
+
+
+ /* CSS FOR GOSSIP PAGE */
+
+ .text-align{
+    text-align: center;
+ }
+
+ .box_gossip{
+margin: auto;
+text-align: center;
+display: flex;
+align-items: center;
+ }
+
+ .container{
+    border-bottom: solid 1px lightgray;
+ }
+
+ .box_comment{
+    margin: auto;
+    text-align: left;
+    display: flex;
+     }
