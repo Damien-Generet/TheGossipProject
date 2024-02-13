@@ -8,15 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-City.destroy_all
-User.destroy_all
-Gossip.destroy_all
-Comment.destroy_all
-Tag.destroy_all
-GossipTag.destroy_all
-PrivateMessage.destroy_all
-LikeComment.destroy_all
-LikeGossip.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('City')
 ActiveRecord::Base.connection.reset_pk_sequence!('User')
@@ -27,6 +18,15 @@ ActiveRecord::Base.connection.reset_pk_sequence!('GossipTag')
 ActiveRecord::Base.connection.reset_pk_sequence!('PrivateMessage')
 ActiveRecord::Base.connection.reset_pk_sequence!('LikeComment')
 ActiveRecord::Base.connection.reset_pk_sequence!('LikeGossip')
+City.destroy_all
+User.destroy_all
+Gossip.destroy_all
+Comment.destroy_all
+Tag.destroy_all
+GossipTag.destroy_all
+PrivateMessage.destroy_all
+LikeComment.destroy_all
+LikeGossip.destroy_all
 
 all_cities = []
 all_users = []
@@ -49,7 +49,7 @@ end
 end
 
 20.times do
-  all_gossips << Gossip.create(title: Faker::Lorem.word, content: Faker::Lorem.sentence(word_count: 4), user: all_users.sample)
+  all_gossips << Gossip.create(title: Faker::Lorem.sentence(word_count: 3), content: Faker::Lorem.sentence(word_count: 25), user: all_users.sample)
 end
 
 10.times do
@@ -66,8 +66,8 @@ end
   all_private_messages << PrivateMessage.create(content: Faker::Lorem.sentence(word_count: 5), sender: sender, recipient: recipient)
 end
 
-20.times do 
-  all_comments << Comment.create(content: Faker::Lorem.sentence(word_count: 2), user: all_users.sample, gossip: all_gossips.sample)
+60.times do 
+  all_comments << Comment.create(content: Faker::Lorem.sentence(word_count: 10), user: all_users.sample, gossip: all_gossips.sample)
 end
 
 20.times do
