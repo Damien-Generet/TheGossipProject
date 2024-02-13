@@ -7,32 +7,16 @@
     </div>
   </div>
 
-
-
 <div class="new_gossip_link">
-<form action="/new_gossip" method="post">
+
+<form action="/gossips" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   Quel est ton nom ?</br></br>
   <input type="text" name="first_name"/></br></br>
-  <input type="submit" name="Valider">
-</form>
+  <input type="submit" name="Valider"></br></br></br></br></br>
 <p><%= link_to "Créer un nouveau gossip", new_gossip_path, class: "link_gossip mb-0 fw-bold" %></p>
+<p><%= link_to "Afficher tout les gossips", gossips_path, class: "link_gossip mb-0 fw-bold" %></p>
+</form>
+
 </div>
 
-<div class="container">
-  <div class="row">
-    <% @ordered_gossips = @gossips.order(:id) %>
-    <% @ordered_gossips.each do |gossip| %>
-      <div class="col-md-4">
-        <div class="my-3 p-3 bg-white rounded box-shadow">
-          <h6 class="border-bottom border-gray pb-2 mb-0"> <%= gossip.user.first_name %> </h6>  
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark"><%= gossip.title %></strong>
-            <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossips_path(gossip.id) %>
-
-          </p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>

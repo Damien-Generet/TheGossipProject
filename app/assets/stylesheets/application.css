@@ -18,7 +18,7 @@
   text-align: center;
  }
 /* CSS FOR HOME PAGE */
-
+ 
  .new_gossip_link{
     display: flex;
     justify-content: center;
@@ -74,7 +74,6 @@ align-items: center;
     text-align: left;
     display: flex;
      }
-
 
 
      /*CSS FOR CONTACT PAGE */

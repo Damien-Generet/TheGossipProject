@@ -10,21 +10,17 @@ class StaticPagesController < ApplicationController
   def team
   end
 
-  def new_gossip
-  end
+  # def new_gossip
+  # end
 
-  def new_gossip_post
-    @gossip_content = params[:content]
-    @gossip_author = params[:author]
-    @gossip_title = params[:title]
-    city = City.create(name: 'Paris', zip_code: "75000")
-    user = User.create(first_name: @gossip_author, last_name: @gossip_author, description: "TEST", email: "TEST@TEST.COM", age: 42, city: city)
-    if Gossip.create(user: user, content: @gossip_content, title: @gossip_title)
-      redirect_to '/home'
-    end
-  end
-  
-  
-  def index_gossips
-  end
+  # def new_gossip_post
+  #   @gossip_content = params[:content]
+  #   @gossip_author = params[:author]
+  #   @gossip_title = params[:title]
+  #   city = City.create(name: 'Paris', zip_code: "75000")
+  #   user = User.create(first_name: @gossip_author, last_name: @gossip_author, description: "TEST", email: "TEST@TEST.COM", age: 42, city: city)
+  #   if Gossip.create(user: user, content: @gossip_content, title: @gossip_title)
+  #     redirect_to '/home'
+  #   end
+  # end
 end

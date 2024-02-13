@@ -1,0 +1,29 @@
+<h1>Lâche ton doss'</h1>
+
+<% if @gossip.errors.any? %>
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @gossip.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+      
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <%= label_tag 'Quel est ton nom?' %>
+  <%= text_field_tag 'author'%>
+  <br>
+
+  <%= label_tag 'Quel est le titre?' %>
+  <%= text_field_tag 'title'%>
+  <br>
+
+  <%= label_tag 'Quel est le contenu?' %>
+  <%= text_field_tag 'content'%>
+  <br>
+
+  <%= submit_tag "Créer un potin" %>
+
+ <% end %>
