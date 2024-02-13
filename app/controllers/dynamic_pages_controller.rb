@@ -1,7 +1,8 @@
 class DynamicPagesController < ApplicationController
-  def welcome
+  def home
     @first_name = params[:first_name]
     puts @first_name
+    @gossips = Gossip.all
   end
 
   def gossip_page

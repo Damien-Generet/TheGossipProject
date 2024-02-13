@@ -8,15 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-City.destroy_all
-User.destroy_all
-Gossip.destroy_all
-Comment.destroy_all
-Tag.destroy_all
-GossipTag.destroy_all
-PrivateMessage.destroy_all
-LikeComment.destroy_all
-LikeGossip.destroy_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('City')
 ActiveRecord::Base.connection.reset_pk_sequence!('User')
@@ -27,6 +18,15 @@ ActiveRecord::Base.connection.reset_pk_sequence!('GossipTag')
 ActiveRecord::Base.connection.reset_pk_sequence!('PrivateMessage')
 ActiveRecord::Base.connection.reset_pk_sequence!('LikeComment')
 ActiveRecord::Base.connection.reset_pk_sequence!('LikeGossip')
+City.destroy_all
+User.destroy_all
+Gossip.destroy_all
+Comment.destroy_all
+Tag.destroy_all
+GossipTag.destroy_all
+PrivateMessage.destroy_all
+LikeComment.destroy_all
+LikeGossip.destroy_all
 
 all_cities = []
 all_users = []
