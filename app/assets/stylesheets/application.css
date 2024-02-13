@@ -14,6 +14,9 @@
  *= require_self
  */
 
+ h1 {
+  text-align: center;
+ }
 /* CSS FOR HOME PAGE */
 
  .new_gossip_link{
@@ -154,3 +157,6 @@ align-items: center;
        background: -o-linear-gradient(left, #ff6a5b 0%, #ff4d7e 100%);
        background: linear-gradient(to right, #ff6a5b 0%, #ff4d7e 100%);
      }
+
+
+
