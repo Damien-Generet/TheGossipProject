@@ -5,12 +5,12 @@ class DynamicPagesController < ApplicationController
   end
 
   def gossip_page
-   id = params[:gossip_id]
+   id = params[:id]
    @gossip = Gossip.find(id)   
   end
 
   def user_page
-    user_id = params[:user_id]
+    user_id = params[:id]
     @user = User.find(user_id)
   end
 end
