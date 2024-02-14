@@ -1,0 +1,15 @@
+<h1>Lâche ton doss'</h1>
+
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <p>The new comment :</p>
+  <%= text_area_tag :comment, @comment.content, autocomplete: "off", class: "form-control",  name: 'new_content'%>
+  <br>
+
+  <%= submit_tag "Update the comment" %>
+
+<% end %>
+
+
+

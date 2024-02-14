@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   resources :gossips
   resources :users
   resources :cities
- 
+
+  resources :gossips do
+    resources :comments
+  end
+  
   get "up" => "rails/health#show", as: :rails_health_check
 
 end
@@ -39,3 +43,12 @@ end
 # PATCH             /cities/:id(.:format)          cities#update
 # PUT               /cities/:id(.:format)          cities#update
 # DELETE            /cities/:id(.:format)          cities#destroy
+
+# gossip_comments GET       /gossips/:gossip_id/comments(.:format)                   comments#index
+# POST                      /gossips/:gossip_id/comments(.:format)                   comments#create
+# new_gossip_comment GET    /gossips/:gossip_id/comments/new(.:format)               comments#new
+# edit_gossip_comment GET   /gossips/:gossip_id/comments/:id/edit(.:format)          comments#edit
+# gossip_comment GET        /gossips/:gossip_id/comments/:id(.:format)               comments#show
+# PATCH                     /gossips/:gossip_id/comments/:id(.:format)               comments#update
+# PUT                       /gossips/:gossip_id/comments/:id(.:format)               comments#update
+# DELETE                    /gossips/:gossip_id/comments/:id(.:format)               comments#destroy

@@ -6,22 +6,38 @@ class GossipsController < ApplicationController
 
   def new
     @gossip = Gossip.new
+    @tags = Tag.all
   end
 
   def show
     id = params[:id]
+    @my_tags = []
     @gossip = Gossip.find(id)   
     @comment = Gossip.find(id).comments
+    
+    @tag_of_gossip = GossipTag.where(gossip: @gossip)
+    @tag_of_gossip.each do |gossip_tag|
+      @my_tags << Tag.find(gossip_tag.tag_id)
+    end
+    
   end
 
   def create
+    @gossip_tags = []
     city = City.create(name: 'Paris', zip_code: "75000")
     user = User.create(first_name: params[:author], last_name: params[:author], description: "TEST", email: "TEST@TEST.COM", age: 42, city: city)
-    puts params
 
     @gossip = Gossip.new(user: user, 
                       title: params[:title],
                       content: params[:content])
+
+    @array_tags = params[:array_tag]
+
+    if @array_tags.class == 'Array'
+        @array_tags.each do |tag_id| 
+          @gossip_tags << GossipTag.create(gossip: @gossip, tag: Tag.find(tag_id))
+        end
+    end
 
     if @gossip.save
       redirect_to '/gossips'

@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-    <% @ordered_gossips = @gossips.order(:id) %>
-    <% @ordered_gossips.each do |gossip| %>
+  <% ordered_gossips = @gossips.order(created_at: :desc) %>
+    <% ordered_gossips.each do |gossip| %>
       <div class="col-md-4">
         <div class="my-3 p-3 bg-white rounded box-shadow">
           <h6 class="border-bottom border-gray pb-2 mb-0"> <%= gossip.user.first_name %> </h6>  
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark"><%= gossip.title %></strong>
-            <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %>
+            <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %></br>
+            Comments : <%= gossip.comments.count %> | Likes : <%= gossip.like_gossips.count %>
           </p>
         </div>
       </div>
