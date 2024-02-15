@@ -1,39 +1,39 @@
 
-<section class="section section-top section-full">
 
-      <!-- Cover -->
-      <div class="bg-cover" style="background-image: url(assets/img/42.jpg);"></div>
 
-      <!-- Overlay -->
-      <div class="bg-overlay"></div>
+    <main role="main">
 
-      <!-- Triangles -->
-      <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
-      <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-
-      <!-- Content -->
-      <div class="container">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-md-8 col-lg-7">
-
-            <!-- Preheading -->
-            <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
-              by Simpleqode
-            </p>
-            
-            <!-- Heading -->
-            <h1 class="text-white text-center mb-4 animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
-              Landing pages for any occasion
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+        <% if current_user %>
+            <h1 class="text-white text-muted text-center mb-5 animate display-2" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
+              Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %> !</h1>
             </h1>
-
-            <!-- Subheading -->
-            <% if current_user %>
-            <p class="lead text-white text-muted text-center mb-5 animate" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-              Welcome <%= "#{current_user.first_name} #{current_user.last_name}" %>
-            </p>
+            <% else %>
+            <h1 class="text-white display-2 text-muted text-center mb-5 animate">Hello, world!</h1>
             <% end %>
-          </div>
-        </div> <!-- / .row -->
-      </div> <!-- / .container -->
+          
+        </div>
+      </div>
 
-    </section>
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <% @best_gossips.each do |gossip| %>
+            <h6 class="border-bottom border-gray pb-2 mb-0"> Author : <%= link_to gossip.user.first_name, user_path(gossip.user), class: "author" %> </h6>  
+            <p class="media-body pb-3 mb-0 small lh-125 center_svg border-bottom border-gray">
+              <strong class="d-block text-gray-dark"> Title : <%= gossip.title %></strong>
+              <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %></br>
+              
+              <svg src="<%= show_img("comments.svg") %>"></svg> <%= gossip.comments.count %> <svg src="<%= show_img("like.svg") %>"></svg> <%= gossip.like_gossips.count %>
+              
+            </p>
+          <% end %>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>

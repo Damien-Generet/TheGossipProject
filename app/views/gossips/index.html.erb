@@ -4,11 +4,13 @@
     <% ordered_gossips.each do |gossip| %>
       <div class="col-md-4">
         <div class="my-3 p-3 bg-white rounded box-shadow">
-          <h6 class="border-bottom border-gray pb-2 mb-0"> <%= gossip.user.first_name %> </h6>  
-          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <strong class="d-block text-gray-dark"><%= gossip.title %></strong>
+          <h6 class="border-bottom border-gray pb-2 mb-0"> Author : <%= link_to gossip.user.first_name, user_path(gossip.user), class: "author" %> </h6>  
+          <p class="media-body pb-3 mb-0 small lh-125 center_svg border-bottom border-gray">
+            <strong class="d-block text-gray-dark"> Title : <%= gossip.title %></strong>
             <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %></br>
-            Comments : <%= gossip.comments.count %> | <%= show_img('like.svg')%> <%= gossip.like_gossips.count %>
+            
+            <svg src="<%= show_img("comments.svg") %>"></svg> <%= gossip.comments.count %> <svg src="<%= show_img("like.svg") %>"></svg> <%= gossip.like_gossips.count %>
+            
           </p>
         </div>
       </div>
