@@ -1,0 +1,12 @@
+ => 
+[32m#<User:0x00007f1a679d0818[0m
+ id: [34m[1m553[0m,
+ first_name: [36m[1mnil[0m,
+ last_name: [36m[1mnil[0m,
+ description: [36m[1mnil[0m,
+ email: [31m[1m"[0m[31mtoto@gmail.com[0m[31m[1m"[0m,
+ age: [36m[1mnil[0m,
+ city_id: [34m[1m564[0m,
+ created_at: Thu, 15 Feb 2024 10:43:26.759452000 UTC +00:00,
+ updated_at: Thu, 15 Feb 2024 10:43:26.759452000 UTC +00:00,
+ password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m[32m>[0m 
