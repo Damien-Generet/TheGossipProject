@@ -19,18 +19,11 @@
           <%= button_to "Delete", @gossip, :method => :delete, class: "btn resize_btn btn-danger btn-sm", id: "delete_gossip_button" %>
         </div>
       <% else %>
-        <% if @like_gossip %>
-
-          <%= button_to "Unlike", gossip_like_gossips_path(@gossip, @like_gossip), form_authenticity_token: true, :method => :delete, class: "btn btn-success", id: "unlike_gossip_button" %>
-   
-  
-        
-        <% else %>
-
-       
-          <%= button_to "Like", gossip_like_gossips_path(@gossip), form_authenticity_token: true, :method => :post, class: "btn btn-success", id: "like_gossip_button" %>
-  
       
+        <% if current_user.like_gossips.exists?(gossip_id: @gossip.id) %>
+          <%= button_to "Unlike", gossip_like_gossip_path(@gossip), form_authenticity_token: true, :method => :delete, class: "btn btn-danger", id: "unlike_gossip_button" %>
+        <% else %>
+          <%= button_to "Like", gossip_like_gossips_path(@gossip), form_authenticity_token: true, :method => :post, class: "btn btn-success", id: "like_gossip_button" %>
         <% end %>
       <% end %>
     </div>
