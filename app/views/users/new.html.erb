@@ -1,0 +1,78 @@
+<div class="banner6 py-5">
+  <!-- Row  -->
+  <div class="row">
+    <div class="container">
+      <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+      <% if @user.errors.any? %>
+  <p>We couldn't create your account for the following reason(s) :</p>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <%end%>
+        <div class="">
+          <h2 class="mb-3 font-weight-light">Get Register For Free</h2>
+          <h6 class="subtitle font-weight-normal">Lorem ipsum dolor sit amet, adipiscing.</h6>
+          <form class="mt-3" action="<%= users_path %>" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="email" type="email" placeholder="Give your Email address" required>
+                </div>
+              </div>
+              <div class="col-lg-12">
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input class="form-control" name="password" type="password" placeholder="Create your password (Minimum 6 characters)" required>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input class="form-control" name="confirm_password" type="password" placeholder="Confirm password" required>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input class="form-control" name="first_name" type="first_name" placeholder="First Name" required>
+                </div>
+              </div>
+              <div class="col-lg-12">
+              <label for="cities">Choose a city :</label>
+              <form id="cityform">
+                <select id="cities" name="city">
+                  <% @cities.each do |city| %>
+                    <option value="<%= city.id %>"><%= city.name %></option>
+                  <% end %>
+                </select>
+              </form>
+              <div class="col-lg-12">
+                <button type="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span> Create Account</span></button>
+                <!--  -->
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-lg-12 text-center mt-4">
+              <h6 class="font-weight-normal">Signup with Social Accounts</h6>
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                  <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" class="btn btn-block bg-facebook text-white mt-3">Facebook</a>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                  <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" class="btn btn-block bg-twitter text-white mt-3">Twitter</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 text-center mt-4">
+              Already have an account? <a href="/sessions/new" class="text-danger">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

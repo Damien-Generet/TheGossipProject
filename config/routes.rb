@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :gossips
   resources :users
   resources :cities
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :gossips do
+    resources :likegossips, only: [:create, :destroy]
+  end
 
   resources :gossips do
     resources :comments

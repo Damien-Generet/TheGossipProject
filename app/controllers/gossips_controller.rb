@@ -1,12 +1,24 @@
 class GossipsController < ApplicationController
 
   def index
-    @gossips = Gossip.all
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    else
+      @gossips = Gossip.all
+    end
   end
 
   def new
-    @gossip = Gossip.new
-    @tags = Tag.all
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
+    else
+
+      @gossip = Gossip.new
+      @tags = Tag.all
+    end
+
   end
 
   def show
@@ -24,12 +36,9 @@ class GossipsController < ApplicationController
 
   def create
     @gossip_tags = []
-    city = City.create(name: 'Paris', zip_code: "75000")
-    user = User.create(first_name: params[:author], last_name: params[:author], description: "TEST", email: "TEST@TEST.COM", age: 42, city: city)
-
-    @gossip = Gossip.new(user: user, 
-                      title: params[:title],
-                      content: params[:content])
+    @gossip = Gossip.new(user: current_user, 
+                         title: params[:title],
+                         content: params[:content])
 
     @array_tags = params[:array_tag]
 
@@ -49,21 +58,32 @@ class GossipsController < ApplicationController
 
   def edit
     @gossip = Gossip.find(params[:id])
+    if @gossip.user != current_user
+      redirect_to "/gossips/#{@gossip.id}"
+    end
   end
 
   def update
     @gossip = Gossip.find(params[:id])
-   if @gossip.update(content: params[:new_content], title: params[:new_title])
-    redirect_to @gossip
-   else
-    render :edit
-   end
+    if @gossip.user == current_user
+      if @gossip.update(content: params[:new_content], title: params[:new_title])
+        redirect_to @gossip
+      else
+        render :edit
+      end
+    else
+      redirect_to "/gossips/#{@gossip.id}"
+    end
   end
 
   def destroy
     @gossip = Gossip.find(params[:id])
-    @gossip.destroy
-    redirect_to '/gossips'
+    if @gossip.user == current_user
+      @gossip.destroy
+      redirect_to '/gossips'
+    else
+      redirect_to "/gossips/#{@gossip.id}"
+    end
   end
 
 end

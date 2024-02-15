@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
     <title>TheGossipProject</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -10,29 +11,50 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  
   <body data-turbo="false">
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/home">The Gossip Project</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/team">Team</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
+  <div class="header1 position-relative">
+  <div class="container">
+    <!-- Header 1 code -->
+    <nav class="navbar navbar-expand-lg h1-nav">
+    <img src="https://i.ibb.co/0C3HwN4/TGP.png" alt="TGP" border="0" class="logo_nav">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header1" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icon-menu"></span>
+			</button>
+      <div class="collapse navbar-collapse" id="header1">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active"><a class="nav-link" href="/home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/team">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gossips/new">Create a Gossip</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gossips">Show Gossips</a></li>
+          <div class="dropdown">
+  <% if current_user %>
+  <%= button_to "Disconnect", session_path(session.id), :method => :delete, class: "btn btn-outline-success"%></button>
+    <% else %>
+    <button class="btn btn-outline-success py-2 px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Login / Sign Up
+  </button>
+    <ul class="dropdown-menu dropdown-menu-light">
+      <li><a class="dropdown-item" href="/sessions/new">Login</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="/users/new">Sign Up</a></li>
     </ul>
+  <% end %>
+</div>
+        </ul>
+      </div>
+    </nav>
+
+    
+    <!-- End Header 1 code -->
   </div>
-</nav>
+</div>
 </header>
 
-<%= yield %>
 
+<%= yield %>
   </body>
 </html>
 

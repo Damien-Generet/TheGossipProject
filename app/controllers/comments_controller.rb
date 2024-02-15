@@ -6,8 +6,7 @@ class CommentsController < ApplicationController
 
     def create
         gossip = Gossip.find(params[:gossip_id])
-        user = User.all.sample
-        @comment = Comment.new(content: params[:content], user: user, gossip: gossip)
+        @comment = Comment.new(content: params[:content], user: current_user, gossip: gossip)
 
         if @comment.save
             redirect_to "/gossips/#{params[:gossip_id]}"
@@ -28,7 +27,7 @@ class CommentsController < ApplicationController
        else
         render :edit
        end
-      end
+    end
 
     def destroy
         @comment = Comment.find(params[:id])

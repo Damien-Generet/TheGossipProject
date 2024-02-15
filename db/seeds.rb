@@ -44,8 +44,13 @@ all_zip_code = ['75001', '75002', '75003', '75004', '75005', '75006', '75007', '
   all_cities << City.create(name: Faker::Address.city, zip_code: all_zip_code.sample)
 end
 
-10.times do
-  all_users << User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.word, email: Faker::Internet.email, age: rand(18..75), city: all_cities.sample)
+prefix = "coucou"
+10.times do |i|
+  password = prefix + i.to_s
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                     description: Faker::Lorem.word, email: Faker::Internet.email, age: rand(18..75), city: all_cities.sample, password: password)
+
+  all_users << user
 end
 
 20.times do

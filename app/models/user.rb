@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :like_gossips
   has_many :like_comments
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 }
+  validates_uniqueness_of :email
 end
