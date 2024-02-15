@@ -20,19 +20,19 @@
         </div>
       <% else %>
         <% if @like_gossip %>
-        <form action:"delete", method: "post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <%= button_to "Unlike", gossip_likegossips_path(@gossip, @like_gossip), :method => :delete, class: "btn btn-success", id: "unlike_gossip_button" %>
-        </form>
+
+          <%= button_to "Unlike", gossip_like_gossips_path(@gossip, @like_gossip), form_authenticity_token: true, :method => :delete, class: "btn btn-success", id: "unlike_gossip_button" %>
+   
+  
         
         <% else %>
 
-        <form action:"create", method:"post" >
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <%= button_to "Like", gossip_likegossips_path(@gossip), :method => :create, class: "btn btn-success", id: "like_gossip_button" %>
-          </form> 
+       
+          <%= button_to "Like", gossip_like_gossips_path(@gossip), form_authenticity_token: true, :method => :post, class: "btn btn-success", id: "like_gossip_button" %>
+  
+      
         <% end %>
-        <% end %>
+      <% end %>
     </div>
     
     <% @my_tags.each do |tag| %>

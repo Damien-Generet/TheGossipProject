@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :gossips do
-    resources :likegossips, only: [:create, :destroy]
+    resources :like_gossips, only: [:create, :destroy]
   end
 
   resources :gossips do

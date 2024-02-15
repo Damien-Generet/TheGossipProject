@@ -1,14 +1,16 @@
 class LikeGossipsController < ApplicationController
   def create
-    @gossip = Gossip.find(params[:id])
-    @like_gossip = LikeGossip.create(user: current_user, gossip: @gossip)
+    @gossip_to_like = Gossip.find(params[:gossip_id])
+    @like_gossip = LikeGossip.create(user: current_user, gossip: @gossip_to_like)
     puts "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-    redirect '/home'
+    redirect_to '/home'
   end
  
   def destroy
-    @gossip = Gossip.find(params[:id])
-    @like_gossip = LikeGossip.find_by(user == current_user && gossip==@gossip).destroy
+    @gossip_to_unlike = Gossip.find(params[:gossip_id])
+    @like_gossip = LikeGossip.find_by(user == current_user && gossip==@gossip_to_unlike).destroy
     puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    redirect_to '/home'
   end
+ 
 end
