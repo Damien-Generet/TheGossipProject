@@ -14,6 +14,81 @@
  *= require_self
  */
 
+/* CSS HIOME AND FOOTBAR */
+.text_hero_color{
+  color: rgb(43, 26, 136);
+  text-shadow: 10px 1px #30e9ab;
+}
+
+.alrazy-title {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 6vw;
+  font-size: calc( 100vw / var(--char-total) );
+  position: relative;
+  padding: 0.4em 0;
+  overflow: hidden;
+}
+.alrazy-title:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-bottom: solid 0.2em;
+  -webkit-animation: underline 1s cubic-bezier(1, 0, 0, 1);
+          animation: underline 1s cubic-bezier(1, 0, 0, 1);
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+@-webkit-keyframes underline {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+@keyframes underline {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+}
+.alrazy-title .word {
+  display: inline-block;
+  -webkit-animation: slide-up 1.25s cubic-bezier(0.5, 0.2, 0, 1);
+          animation: slide-up 1.25s cubic-bezier(0.5, 0.2, 0, 1);
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-delay: calc( .5s + (.1s * var(--word-index)) );
+          animation-delay: calc( .5s + (.1s * var(--word-index)) );
+}
+@-webkit-keyframes slide-up {
+  from {
+    -webkit-transform: translateY(125%);
+            transform: translateY(125%);
+  }
+}
+@keyframes slide-up {
+  from {
+    -webkit-transform: translateY(125%);
+            transform: translateY(125%);
+  }
+}
+.splitting-mark {
+  color: #FFF !important;
+}
+
+
+/*
+ * Base structure
+ */
+
+.cover-container {
+  max-width: 42em;
+}
+
+
 
 
 
@@ -28,7 +103,7 @@
 
  .container{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
  }
  
  .header1 h1,
@@ -293,89 +368,49 @@ flex-direction: column;
 
 /* TEAM PAGE */
 
-.rounded-circle {
-  border-radius: 50%!important;
-}
-.border-5 {
-  border-width: 5px;
-}
-
-.border-white {
-  border-opacity: 1;
-  border-color: rgba(255,255,255, 1) !important;
-}
-
-.shadow {
-  box-shadow: 0 0.375rem 1.5rem 0 rgba(140,152,164,.125)!important;
+.img_dev{
+  width: 30%;
 }
 
 
-img {
-  max-width: 100%;
-  height: auto;
+@import url(//fonts.googleapis.com/css?family=Montserrat:300,500);
+.team4 {
+  font-family: "Montserrat", sans-serif;
+	color: #8d97ad;
+  font-weight: 300;
 }
 
-.icon-sm {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 75%;
-  line-height: normal;
-}
-.rounded-circle {
-  border-radius: 50%!important;
+.team4 h1, .team4 h2, .team4 h3, .team4 h4, .team4 h5, .team4 h6 {
+  color: #3e4555;
 }
 
-.hover-top-in .hover-top--in {
-  transition: ease-in-out all .35s;
-  position: relative;
-  top: 0
+.team4 .font-weight-medium {
+	font-weight: 500;
 }
 
-.hover-top-in:hover .hover-top--in {
-  top: -10px
+.team4 h5 {
+    line-height: 22px;
+    font-size: 18px;
 }
 
-.me-1 {
-  margin-right: 0.25rem!important;
+.team4 .subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+		font-size: 13px;
 }
 
-.fw-700 {
-  font-weight: 700!important;
-}
-.mb-1 {
-  margin-bottom: 0.25rem!important;
-}
-
-.z-index-1 {
-  z-index: 1!important;
+.team4 ul li a {
+  color: #8d97ad;
+  padding-right: 15px;
+  -webkit-transition: 0.1s ease-in;
+  -o-transition: 0.1s ease-in;
+  transition: 0.1s ease-in;
 }
 
-.pt-6 {
-  padding-top: 2.5rem!important;
-}
-.p-4 {
-  padding: 1.5rem!important;
-}
-.mt-n4 {
-  margin-top: -1.5rem!important;
-}
-
-.shadow {
-  box-shadow: 0 0.375rem 1.5rem 0 rgba(var(--bs-gray-700-rgb),.125)!important;
-}
-.px-5 {
-  padding-right: 2rem!important;
-  padding-left: 2rem!important;
-}
-.position-relative {
-  position: relative!important;
-}
-.overflow-hidden {
-  overflow: hidden!important;
+.team4 ul li a:hover {
+  -webkit-transform: translate3d(0px, -5px, 0px);
+  transform: translate3d(0px, -5px, 0px);
+	color: #316ce8;
 }
 
 

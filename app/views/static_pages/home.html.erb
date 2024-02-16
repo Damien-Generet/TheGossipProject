@@ -1,39 +1,47 @@
+<main role="main">
+  <div class="bg_col_home_hero">
+      <div class="cover-container pt-1 d-flex w-100 h-100 mx-auto flex-column">
+      <main class="px-3">
+      <% if current_user %>
+      <h1 class="alrazy-title text_hero_color text-center mb-3 animate display-3" data-splitting>
+        Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %> !</h1>
+        <p class="lead text-center">You are connected ! Please create a great gossip ! A crunchy one.</p>
+      </h1>
+      <% else %>
+      <h1 class="display-3 alrazy-title text_hero_color text-center mb-3 animate" data-splitting>Hello, Stranger!</h1>
+      <p class="lead text-center text-grey">Please create an account or log in ! And then, let me know something about somoene !</p>
+      <% end %>
+</div>  
+      </main>
 
+    </div>
 
-
-    <main role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-        <% if current_user %>
-            <h1 class="text-white text-muted text-center mb-5 animate display-2" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-              Welcome, <%= "#{current_user.first_name} #{current_user.last_name}" %> !</h1>
-            </h1>
-            <% else %>
-            <h1 class="text-white display-2 text-muted text-center mb-5 animate">Hello, world!</h1>
-            <% end %>
-          
-        </div>
+    <h2 class="text-white text-muted text-center animate display-6" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">Here the most liked gossip !</h2>
+      <div class="container m-auto liked_container d-flex flex-column justify-content-center">
+      <div class="row w-100">
+        <% @best_gossips.each do |gossip| %>
+          <div class="col-md-4 liked_gossip">
+            <div class="my-3 d-flex flex-column justify-content-around bg-white rounded box-shadow">
+              <h6 class="border-bottom border-gray pb-2 mb-0"> Author : <%= link_to gossip.user.first_name, user_path(gossip.user), class: "author" %> </h6>  
+              <p class="media-body pb-3 mb-0 small lh-125 center_svg border-bottom border-gray">
+                <strong class="d-block text-gray-dark"> Title : <%= gossip.title %></strong>
+                <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %></br>
+                
+                <svg src="<%= show_img("comments.svg") %>"></svg> <%= gossip.comments.count %> <svg src="<%= show_img("like.svg") %>"></svg> <%= gossip.like_gossips.count %>
+                
+              </p>
+            </div>
+          </div>
+        <% end %>
       </div>
+    </div>
 
-      <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <% @best_gossips.each do |gossip| %>
-            <h6 class="border-bottom border-gray pb-2 mb-0"> Author : <%= link_to gossip.user.first_name, user_path(gossip.user), class: "author" %> </h6>  
-            <p class="media-body pb-3 mb-0 small lh-125 center_svg border-bottom border-gray">
-              <strong class="d-block text-gray-dark"> Title : <%= gossip.title %></strong>
-              <%= gossip.content.truncate(20, omission: '...') %> <%= link_to "Voir plus", gossip_path(gossip.id) %></br>
-              
-              <svg src="<%= show_img("comments.svg") %>"></svg> <%= gossip.comments.count %> <svg src="<%= show_img("like.svg") %>"></svg> <%= gossip.like_gossips.count %>
-              
-            </p>
-          <% end %>
-        </div>
 
-        <hr>
 
-      </div> <!-- /container -->
 
     </main>
+
+<script src="https://unpkg.com/splitting@1.0.0/dist/splitting.js"></script>
+<script>
+    Splitting();
+</script>
